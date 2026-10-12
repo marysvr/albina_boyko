@@ -1,0 +1,164 @@
+.expert {
+  position: relative;
+  background-color: var(--second-bg-color);
+  padding-block: 100px;
+}
+
+.expert__container {
+  display: flex;
+
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1620px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3.441rem + 7.17vw, 10rem);
+}
+
+.expert__info {
+  flex: 1;
+  padding-block: 130px;
+}
+
+.expert__h2 {
+  font-family: var(--second-family);
+  font-weight: 300;
+  font-size: 25px;
+  color: var(--main-color);
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.expert__title {
+  font-family: var(--second-family);
+  font-weight: 900;
+  font-size: 42px;
+  color: var(--main-color);
+  padding-bottom: 40px;
+}
+
+.expert__text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+  color: var(--main-color);
+  max-width: 600px;
+  padding-bottom: 10px;
+}
+
+/* Фото как отдельный блок */
+.expert__image {
+  flex: 0 0 45%;
+  max-width: 45%;
+  height: auto;
+  padding-top: 135px;
+}
+
+.expert__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Медиа-запросы */
+
+@media (width < 1600px) {
+  .expert {
+    padding: 30px;
+  }
+}
+
+/* Когда расстояние между фото и инфой менее 20px, скрываем фото */
+@media (max-width: 1100px) {
+  .expert {
+    padding: 0px;
+  }
+  .expert__container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 997px) {
+  .expert__container {
+    gap: 15px;
+  }
+
+  .expert__image {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 867px) {
+  .expert__container {
+    gap: 10px;
+  }
+
+  .expert__image {
+    flex: 0 0 35%;
+    max-width: 35%;
+  }
+}
+
+/* Скрываем фото, текст по центру */
+@media (max-width: 900px) {
+  .expert__container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .expert__image {
+    display: none; /* Скрываем фото */
+  }
+
+  .expert__info {
+    padding-block: 60px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .expert__text {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .expert__title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .expert {
+    padding-block: 50px;
+  }
+
+  .expert__title {
+    font-size: 28px;
+    padding-bottom: 20px;
+  }
+
+  .expert__text {
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+
+  .expert__info {
+    padding-block: 30px;
+  }
+}
+
+@media (max-width: 440px) {
+  .expert {
+    padding-block: 30px;
+  }
+
+  .expert__title {
+    font-size: 24px;
+  }
+
+  .expert__text {
+    font-size: 14px;
+  }
+}

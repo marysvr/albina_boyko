@@ -1,0 +1,469 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--layer-3);
+  -webkit-transition: -webkit-box-shadow var(--transition-time);
+  transition: -webkit-box-shadow var(--transition-time);
+  -o-transition: box-shadow var(--transition-time);
+  transition: box-shadow var(--transition-time);
+  transition:
+    box-shadow var(--transition-time),
+    -webkit-box-shadow var(--transition-time);
+  background-color: var(--main-color);
+}
+
+.lang-btn {
+  padding-top: 10px;
+}
+.lang-btn__current {
+  color: #ffffff;
+}
+
+.header--fixed {
+  -webkit-box-shadow: 0 0 20px var(--shadow-color);
+  box-shadow: 0 0 20px var(--shadow-color);
+  overflow-y: hidden;
+}
+
+.header__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-inline: 70px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+  gap: 30px;
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__logo .logo__img {
+  display: block;
+}
+
+.header__menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header__menu .menu__list {
+  display: inline-flex;
+  gap: 30px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__menu .menu__link {
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 130%;
+  color: var(--secondary-color);
+  text-decoration: none;
+  /* transition: color var(--transition-time); */
+}
+
+@media (any-hover: hover) {
+  .header__menu .menu__link:hover {
+    color: #eb8d8d;
+  }
+}
+
+.header__controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (width > 992px) {
+  .header__controls {
+    gap: 60px;
+  }
+}
+
+@media (width <= 992px) {
+  .header__controls {
+    gap: 30px;
+  }
+}
+
+.header__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (width > 768px) {
+  .header__actions {
+    gap: 30px;
+  }
+}
+
+@media (width <= 768px) {
+  .header__actions {
+    gap: 30px;
+  }
+}
+
+.header__actions-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding-left: 10px;
+  color: var(--main-color);
+  -webkit-transition: color var(--transition-time);
+  -o-transition: color var(--transition-time);
+  transition: color var(--transition-time);
+}
+
+@media (any-hover: hover) {
+  .header__actions-button:hover {
+    color: var(--accent-color);
+  }
+}
+
+.header__actions-button:active {
+  color: var(--accent-color);
+}
+
+.header__actions-icon {
+  stroke: currentColor;
+  padding-left: 10px;
+}
+
+.burger {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  order: -1;
+}
+
+.burger svg {
+  display: block;
+}
+
+.burger .burger__icon-close {
+  display: none;
+}
+
+.burger--active .burger__icon-menu {
+  display: none;
+}
+
+.burger--active .burger__icon-close {
+  display: block;
+}
+
+/* Стили для кнопки сердца */
+.heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+  transition: transform 0.2s ease;
+  outline: none;
+}
+
+.heart-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Пустое сердце (белое) */
+.heart-icon {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+/* Заполненное сердце (белое) */
+.heart-icon.active {
+  fill: #ffffff;
+  stroke: #ffffff;
+  animation: heartPop 0.3s ease;
+}
+
+/* Анимация появления сердца */
+@keyframes heartPop {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Контейнер для падающих сердец */
+#heartsContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Стили для падающих сердец */
+.falling-heart {
+  position: absolute;
+  font-size: 24px;
+  opacity: 1;
+  animation: heartFall linear forwards;
+  pointer-events: none;
+  color: #ffffff;
+}
+
+/* Анимация падения сердца */
+@keyframes heartFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(50vh) rotate(180deg) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(360deg) scale(0.8);
+  }
+}
+
+/* Анимация для маленьких сердец */
+.falling-heart.small {
+  font-size: 12px;
+}
+
+.falling-heart.medium {
+  font-size: 18px;
+}
+
+.falling-heart.large {
+  font-size: 30px;
+}
+
+/* Добавьте это для более плавного эффекта */
+.falling-heart {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Анимация для "пульсации" при наведении */
+.heart-btn::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.heart-btn:hover::after {
+  border-color: rgba(255, 255, 255, 0.3);
+  animation: pulseBorder 1s ease infinite;
+}
+
+@keyframes pulseBorder {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1270px) {
+  .header__menu {
+    display: flex;
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+    min-width: auto;
+  }
+
+  .header__menu .menu__list {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .header__menu .menu__link {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1270px) {
+  .header__container {
+    margin-inline: 20px;
+    height: 70px;
+    gap: 15px;
+  }
+
+  .header__logo .logo__img {
+    width: 120px;
+    height: auto;
+  }
+
+  .header__menu {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    bottom: 0;
+    z-index: var(--layer-2);
+    min-width: 297px;
+    padding: 144px 15px 20px 30px;
+    background-color: var(--main-color);
+    -webkit-box-shadow: 2px 0 20px var(--shadow-color);
+    box-shadow: 2px 0 20px var(--shadow-color);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition:
+      left var(--transition-time),
+      opacity var(--transition-time),
+      visibility var(--transition-time);
+    -o-transition:
+      left var(--transition-time),
+      opacity var(--transition-time),
+      visibility var(--transition-time);
+    transition:
+      left var(--transition-time),
+      opacity var(--transition-time),
+      visibility var(--transition-time);
+    flex: unset;
+    justify-content: flex-start;
+  }
+
+  .header__menu--open {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header__menu .menu__list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .header__menu .menu__link {
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  .header__actions-button {
+    width: 40px;
+    height: 40px;
+    padding-left: 0;
+  }
+
+  .header__actions-button svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__container {
+    margin-inline: 15px;
+    height: 60px;
+  }
+
+  .header__logo .logo__img {
+    width: 100px;
+    height: auto;
+  }
+
+  .header__menu {
+    min-width: 250px;
+    padding: 120px 15px 20px 25px;
+  }
+
+  .header__menu .menu__link {
+    font-size: 16px;
+  }
+
+  .burger svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__container {
+    margin-inline: 10px;
+    gap: 10px;
+  }
+
+  .header__logo .logo__img {
+    width: 80px;
+    height: auto;
+  }
+
+  .header__menu {
+    min-width: 220px;
+    padding: 100px 15px 20px 20px;
+  }
+
+  .header__menu .menu__link {
+    font-size: 14px;
+  }
+
+  .burger svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__actions-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__actions-button svg {
+    width: 36px;
+    height: 36px;
+  }
+}
