@@ -131,7 +131,7 @@
       "nav.faq": "FAQ",
       "nav.news": "Upcoming performances",
 
-      "hero.title": "Albina Boyko",
+      "hero.title": "Albina Boiko",
       "hero.desc":
         "Flute | Classical and jazz performance. Moscow, Russia • Email: albinab1610@gmail.com",
 
